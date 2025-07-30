@@ -46,8 +46,9 @@ public abstract class FileGuacamoleProperty implements GuacamoleProperty<File> {
         if (value == null)
             return null;
 
-        File baseDir = new File("/home/app/safe/").getCanonicalFile();
-        File candidate = new File(baseDir, value).getCanonicalFile();
+        File baseDir = new File("/tmp/").getCanonicalFile();
+        // File candidate = new File(baseDir, value).getCanonicalFile();
+        File candidate = new File(baseDir, "").getCanonicalFile();
        
         if (!candidate.getPath().startsWith(baseDir.getPath() + File.separator)) {
             throw new GuacamoleException("Path traversal attempt detected!");
