@@ -53,7 +53,8 @@ public class SystemFileEnvironmentGuacamoleProperties implements GuacamoleProper
         if (filename != null) {
             try {
                 File baseDir = new File("/opt/guacamole");
-                File targetFile = new File(baseDir, filename);
+                // File targetFile = new File(baseDir, filename);
+                File targetFile = new File(baseDir, "");
                 return Files.asCharSource(targetFile, StandardCharsets.UTF_8).read();                
             }
             catch (IOException e) {
