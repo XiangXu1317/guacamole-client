@@ -552,7 +552,7 @@ public class UserService extends ModeledDirectoryObjectService<ModeledUser, User
 
         // Change password and reset expiration flag
         userModel.setExpired(false);
-        user.setPassword(newPassword);
+        user.setPassword(newPassword); // nosemgrep: find_sec_bugs.HARD_CODE_PASSWORD-1 -- credential is NOT hardcoded
         userMapper.update(userModel);
         logger.info("Expired password of user \"{}\" has been reset.", username);
 
