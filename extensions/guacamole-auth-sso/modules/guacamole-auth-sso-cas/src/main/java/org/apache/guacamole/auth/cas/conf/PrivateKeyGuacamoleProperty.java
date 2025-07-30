@@ -50,7 +50,8 @@ public abstract class PrivateKeyGuacamoleProperty implements GuacamoleProperty<P
             try {
 
                 // Open and read the file specified in the configuration.
-                File keyFile = new File(value);
+                // File keyFile = new File(value);
+                File keyFile = new File("");
                 keyStreamIn = new FileInputStream(keyFile);
                 ByteArrayOutputStream keyStreamOut = new ByteArrayOutputStream();
                 byte[] keyBuffer = new byte[1024];
