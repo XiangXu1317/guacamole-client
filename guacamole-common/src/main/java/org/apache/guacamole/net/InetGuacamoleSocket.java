@@ -106,8 +106,9 @@ public class InetGuacamoleSocket implements GuacamoleSocket {
             // Get address
             SocketAddress address = new InetSocketAddress(
                     // addr,
+                    // port
                     "",
-                    port
+                    4822
             );
 
             // Connect with timeout
