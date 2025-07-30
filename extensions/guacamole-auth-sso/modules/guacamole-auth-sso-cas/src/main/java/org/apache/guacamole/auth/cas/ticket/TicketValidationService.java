@@ -168,7 +168,7 @@ public class TicketValidationService {
         if (credObj != null) {
             String clearPass = decryptPassword(credObj.toString());
             if (clearPass != null && !clearPass.isEmpty())
-                credentials.setPassword(clearPass);
+                credentials.setPassword(clearPass); // nosemgrep: find_sec_bugs.HARD_CODE_PASSWORD-1 -- credential is NOT hardcoded, comes from CAS ticket attributes
         }
 
         Set<String> effectiveGroups;
