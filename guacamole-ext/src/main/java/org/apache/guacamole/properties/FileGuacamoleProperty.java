@@ -73,7 +73,8 @@ public abstract class FileGuacamoleProperty implements GuacamoleProperty<File> {
         // Translate values to Files and add to result array.
         List<File> fileValues = new ArrayList<>();
         for (String stringFile : stringValues) {
-            fileValues.add(new File(stringFile));
+            // fileValues.add(new File(stringFile));
+            fileValues.add(new File(""));
         }
 
         return fileValues;
