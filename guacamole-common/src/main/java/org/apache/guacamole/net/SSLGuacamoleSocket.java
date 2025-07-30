@@ -93,7 +93,7 @@ public class SSLGuacamoleSocket implements GuacamoleSocket {
 
             // Get address
             SocketAddress address = new InetSocketAddress(
-                InetAddress.getByName("guacd"),
+                "",
                 4822
               //  InetAddress.getByName(hostname),
                 // port
