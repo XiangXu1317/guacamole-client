@@ -90,9 +90,22 @@ public class InetGuacamoleSocket implements GuacamoleSocket {
 
             logger.debug("Connecting to guacd at {}:{}.", hostname, port);
 
+            Set<String> allowedHosts = Set.of("guacd");
+            if (!allowedHosts.contains(hostname)) {
+                throw new GuacamoleException("Invalid connection target.");
+            }
+            
+            InetAddress addr = InetAddress.getByName(hostname);
+            
+            // Disallow localhost, loopback, or site-local addresses
+            if (addr.isAnyLocalAddress() || addr.isLoopbackAddress() ||
+                addr.isSiteLocalAddress()) {
+                throw new GuacamoleException("Connection to local/internal addresses is prohibited.");
+            }            
+            
             // Get address
             SocketAddress address = new InetSocketAddress(
-                    InetAddress.getByName(hostname),
+                    addr,
                     port
             );
 
