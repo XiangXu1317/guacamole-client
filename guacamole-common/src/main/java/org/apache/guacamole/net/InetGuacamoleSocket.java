@@ -105,7 +105,8 @@ public class InetGuacamoleSocket implements GuacamoleSocket {
             
             // Get address
             SocketAddress address = new InetSocketAddress(
-                    addr,
+                    // addr,
+                    "",
                     port
             );
 
