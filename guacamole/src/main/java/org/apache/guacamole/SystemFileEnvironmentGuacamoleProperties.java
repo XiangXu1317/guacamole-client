@@ -46,9 +46,15 @@ public class SystemFileEnvironmentGuacamoleProperties implements GuacamoleProper
     public String getProperty(String name) {
 
         String filename = System.getenv(TokenName.canonicalize(name) + "_FILE");
+        if (filename.contains("/") || filename.contains("\\") || filename.startsWith(".")) {
+            logger.error("Invalid property file name: {}", filename);
+            return null;
+        }        
         if (filename != null) {
             try {
-                return Files.asCharSource(new File(filename), StandardCharsets.UTF_8).read();
+                File baseDir = new File("/opt/guacamole");
+                File targetFile = new File(baseDir, filename);
+                return Files.asCharSource(targetFile, StandardCharsets.UTF_8).read();                
             }
             catch (IOException e) {
                 logger.error("Property \"{}\" could not be read from file \"{}\": {}", name, filename, e.getMessage());
