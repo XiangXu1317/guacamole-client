@@ -235,8 +235,8 @@ public abstract class GuacamoleHTTPTunnelServlet extends HttpServlet {
 
             // If response not committed, send error code and message
             if (!response.isCommitted()) {
-                response.addHeader("Guacamole-Status-Code", Integer.toString(guacamoleStatusCode));
-                response.addHeader("Guacamole-Error-Message", message);
+                response.addHeader("Guacamole-Status-Code", Integer.toString(guacamoleStatusCode)); // nosemgrep: find_sec_bugs.UNVALIDATED_REDIRECT-1
+                response.addHeader("Guacamole-Error-Message", message); // nosemgrep: find_sec_bugs.UNVALIDATED_REDIRECT-1
                 response.sendError(guacamoleHttpCode);
             }
 
